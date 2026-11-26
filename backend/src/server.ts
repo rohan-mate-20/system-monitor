@@ -36,8 +36,8 @@ if (!fs.existsSync(updatesDir)) {
 
 // Serve uploaded screenshots, downloads & auto-update manifests statically
 app.use('/uploads', express.static(config.uploadDir));
-app.use('/downloads', express.static(path.join(__dirname, '../downloads')));
-app.use('/updates', express.static(updatesDir));
+app.use(['/downloads', '/api/downloads'], express.static(path.join(__dirname, '../downloads')));
+app.use(['/updates', '/api/updates'], express.static(updatesDir));
 
 // Direct Desktop Agent Download Route (Windows .exe)
 app.get(['/download/agent', '/api/download/agent', '/download/agent/win'], (req, res) => {

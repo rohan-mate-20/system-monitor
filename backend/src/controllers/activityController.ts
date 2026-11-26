@@ -289,7 +289,9 @@ export async function uploadActivityBatch(req: AuthenticatedRequest, res: Respon
       success: true,
       message: 'Processed ' + activities.length + ' activity entries',
       totalActiveSeconds: sanitizedAtt.totalActiveSeconds,
-      totalIdleSeconds: sanitizedAtt.combinedBreakSeconds
+      totalIdleSeconds: sanitizedAtt.combinedBreakSeconds,
+      latestVersion: '1.0.1',
+      updateUrl: '/updates/latest.yml'
     });
   } catch (error: any) {
     console.error('Activity upload error:', error);
